@@ -1,18 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// import { useCountries } from "./hooks/useCountries";
+import { useQuizContext } from "./hooks/useQuizContext";
+
+import "./App.scss";
 
 function App() {
-  const [count, setCount] = useState(0)
+    // const countries = useCountries();
 
-  return (
-    <>
-      <h1>
-        Hola mundo!
-      </h1>
-    </>
-  )
+    const { appRunning } = useQuizContext();
+
+    return (
+        <>
+            <h1>Hola mundo!</h1>{appRunning ? <p>App is running</p> : null}
+        </>
+    );
 }
 
-export default App
+export default App;
