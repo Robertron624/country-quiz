@@ -24,10 +24,18 @@ const QuizQuestion = ({
     const handleFinalAnswer = () => {
         setfinalAnswer(currentSelected);
         setisCorrect(currentSelected === correctAnswer);
+        if(finalAnswer) {
+            console.log("next question")
+        }
     };
 
     return (
         <div className="question-container">
+            {isFlagQuestion && (
+                <div className="flag-container">
+                    <img src={flagUrl} alt="flag of the country" />
+                </div>
+            )}
             <p>
                 {isFlagQuestion
                     ? "Which country does this flag belong to?  "
@@ -39,9 +47,11 @@ const QuizQuestion = ({
                         key={option}
                         className={`option ${
                             currentSelected === option ? "selected" : ""
-                        } ${isCorrect === false && finalAnswer === option ? "final-answer wrong-answer" : ""} ${isCorrect === true && finalAnswer === option ? "final-answer correct-answer" : ""}`}
+                        } ${(finalAnswer && option == correctAnswer) ? 'correct-answer' : ''} ${isCorrect === false && finalAnswer === option ? "final-answer wrong-answer" : ""} ${isCorrect === true && finalAnswer === option ? "final-answer" : ""}`}
                     >
                         <button
+
+                            disabled={finalAnswer ? true : false}
                             onClick={() => {
                                 handleClick(option);
                             }}
@@ -58,9 +68,8 @@ const QuizQuestion = ({
                 <button
                     className="submit-btn"
                     onClick={handleFinalAnswer}
-                    disabled={finalAnswer !== ""}
                 >
-                    Submit
+                    {finalAnswer ? "Next" : "Submit"}
                 </button>
             )} 
         </div>

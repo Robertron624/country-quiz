@@ -8,6 +8,17 @@
     padding: 4.25rem 2rem;
     display: grid;
 
+    .flag-container {
+        width: 5.25rem;
+        box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1.75rem;
+
+        img {
+            height: 3.375rem;
+            border-radius: 0.25rem;
+        }
+    }
+
     & > p {
         color: $dark-blue--variation-1;
         font-size: 1.5rem;
@@ -41,13 +52,6 @@
             }
 
             &.final-answer {
-                
-                &.correct-answer {
-                    background-color: $btn-success;
-                    border: 1px solid $btn-success;
-                    color: $white;
-                }
-
                 &.wrong-answer {
                     background-color: $btn-error;
                     border: 1px solid $btn-error;
@@ -82,7 +86,7 @@
         border-radius: 0.75rem;
         justify-self: flex-end;
         background-color: $btn-selected;
-        box-shadow: 0px 2px 4px 0px $btn-selected--box-shadow;;
+        box-shadow: 0px 2px 4px 0px $btn-selected--box-shadow;
         color: $white;
         font-size: 1.125rem;
         font-style: normal;
