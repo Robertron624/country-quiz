@@ -7,12 +7,9 @@
 
 export interface Question {
     id: number;
+    type: 'capital' | 'flag';
     options: string[];
     correctAnswer: string;
-}
-
-// Flag Question Type, will be used by flag question type, only adds the flagUrl property to the general question type.
-
-export interface FlagQuestion extends Question {
-    flagUrl: string;
+    flagUrl?: string;
+    countryCapital?: string;
 }

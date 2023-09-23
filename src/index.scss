@@ -1,3 +1,5 @@
+@import './vars.scss';
+
 @font-face {
   font-family: 'Poppins';
   src: url(./assets/Poppins-Regular.ttf) format('truetype');
@@ -37,15 +39,21 @@ figure, blockquote, dl, dd {
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role='list'],
-ol[role='list'] {
+ul,
+ol {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* Set core body defaults */
 body {
   min-height: 100vh;
   line-height: 1.5;
+  display: grid;
+  place-content: center;
+
+  background-color: $bg-violet;
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -77,6 +85,14 @@ picture {
 input, button,
 textarea, select {
   font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  padding: 0;
+  border: none;
 }
 
 /* Make sure textareas without a rows attribute are not tiny */

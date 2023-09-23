@@ -1,7 +1,18 @@
 // import { useCountries } from "./hooks/useCountries";
 import { useQuizContext } from "./hooks/useQuizContext";
+import QuizQuestion from "./components/QuizQuestion";
 
 import "./App.scss";
+import { Question } from "./types/AppTypes";
+import illustration from "./assets/images/undraw_adventure_re_ncqp.svg";
+
+const mockQuestion: Question = {
+    id: 1,
+    type: "capital",
+    options: ["Argentina", "Brazil", "Chile", "Colombia"],
+    correctAnswer: "Argentina",
+    countryCapital: "Buenos Aires",
+};
 
 function App() {
     // const countries = useCountries();
@@ -9,9 +20,11 @@ function App() {
     const { appRunning } = useQuizContext();
 
     return (
-        <>
-            <h1>Hola mundo!</h1>{appRunning ? <p>App is running</p> : null}
-        </>
+        <div className="outer-container">
+          <img className="illustration" src={illustration} alt="a man with a earth globe to the right" />
+            <h1>Country Quiz</h1>
+            <QuizQuestion {...mockQuestion} />
+        </div>
     );
 }
 

@@ -1,6 +1,37 @@
+@import "./vars.scss";
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    color: #fff;
+}
+
+.outer-container {
+    text-align: left;
+    width: 29rem;
+    position: relative;
+
+    .illustration {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        width: 10.125rem;
+        height: 7.25rem;
+        z-index: 1;
+    }
+
+    & > h1 {
+        width: 100%;
+        color: $white--variation-1;
+        font-size: 2.25rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+        margin-bottom: 0.62rem;
+    }
 }
