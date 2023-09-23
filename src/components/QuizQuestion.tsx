@@ -13,39 +13,57 @@ const QuizQuestion = ({
 }: Question) => {
     const isFlagQuestion = type === "flag";
 
-    const [isCorrect, setisCorrect] = useState(false);
-    const [currentSelected, setcurrentSelected] = useState<string>(options[0]);
+    const [isCorrect, setisCorrect] = useState<boolean | null>(null);
+    const [currentSelected, setcurrentSelected] = useState<string>("");
+    const [finalAnswer, setfinalAnswer] = useState<string>("");
+
+    const handleClick = (option: string) => {
+        setcurrentSelected(option);
+    };
+
+    const handleFinalAnswer = () => {
+        setfinalAnswer(currentSelected);
+        setisCorrect(currentSelected === correctAnswer);
+    };
 
     return (
-
-            <div className="question-container">
-                <p>
-                    {isFlagQuestion
-                        ? "Which country does this flag belong to?  "
-                        : `${countryCapital} is the capital of`}
-                </p>
-                <ul role="list" className="options">
-                    {options.map((option, index) => (
-                        <li
-                            key={option}
-                            className={`option ${
-                                currentSelected === option ? "selected" : ""
-                            }`}
+        <div className="question-container">
+            <p>
+                {isFlagQuestion
+                    ? "Which country does this flag belong to?  "
+                    : `${countryCapital} is the capital of`}
+            </p>
+            <ul role="list" className="options">
+                {options.map((option, index) => (
+                    <li
+                        key={option}
+                        className={`option ${
+                            currentSelected === option ? "selected" : ""
+                        } ${isCorrect === false && finalAnswer === option ? "final-answer wrong-answer" : ""} ${isCorrect === true && finalAnswer === option ? "final-answer correct-answer" : ""}`}
+                    >
+                        <button
                             onClick={() => {
-                                setcurrentSelected(option);
-                                setisCorrect(option === correctAnswer);
+                                handleClick(option);
                             }}
                         >
-                            <button>
-                                <span className="option-letter">
-                                    {mapper[index]}
-                                </span>
-                                {option}
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+                            <span className="option-letter">
+                                {mapper[index]}
+                            </span>
+                            {option}
+                        </button>
+                    </li>
+                ))}
+            </ul>
+            {currentSelected && (
+                <button
+                    className="submit-btn"
+                    onClick={handleFinalAnswer}
+                    disabled={finalAnswer !== ""}
+                >
+                    Submit
+                </button>
+            )} 
+        </div>
     );
 };
 

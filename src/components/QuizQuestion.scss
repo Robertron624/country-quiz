@@ -3,9 +3,10 @@
 .question-container {
     background-color: $white;
     width: 100%;
-    height: 32.1875rem;
+    //height: 32.1875rem;
     border-radius: 1.5rem;
     padding: 4.25rem 2rem;
+    display: grid;
 
     & > p {
         color: $dark-blue--variation-1;
@@ -33,6 +34,27 @@
                 color: $white;
             }
 
+            &.correct-answer {
+                background-color: $btn-success;
+                border: 1px solid $btn-success;
+                color: $white;
+            }
+
+            &.final-answer {
+                
+                &.correct-answer {
+                    background-color: $btn-success;
+                    border: 1px solid $btn-success;
+                    color: $white;
+                }
+
+                &.wrong-answer {
+                    background-color: $btn-error;
+                    border: 1px solid $btn-error;
+                    color: $white;
+                }
+            }
+
             button {
                 width: 100%;
                 display: flex;
@@ -52,5 +74,20 @@
                 }
             }
         }
+    }
+
+    .submit-btn {
+        width: 7.25rem;
+        height: 3.5rem;
+        border-radius: 0.75rem;
+        justify-self: flex-end;
+        background-color: $btn-selected;
+        box-shadow: 0px 2px 4px 0px $btn-selected--box-shadow;;
+        color: $white;
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin-top: 2rem;
     }
 }
