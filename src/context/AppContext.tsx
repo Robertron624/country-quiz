@@ -22,7 +22,7 @@
     export const QuizProvider: React.FC<{ children: ReactNode }> = ({
         children,
     }) => {
-        const [appRunning, setAppRunning] = useState<boolean>(true);
+        const [appRunning, setAppRunning] = useState<boolean>(false);
         const [userScore, setUserScore] = useState<number>(0);
         const [currentQuestion, setCurrentQuestion] = useState<Question | null>(
             null

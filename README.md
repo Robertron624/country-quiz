@@ -55,6 +55,8 @@ Introduce your projects by taking a screenshot or a gif. Try to tell visitors a 
 - [Sass](https://sass-lang.com/) - CSS preprocessor
 - [Vite](https://vitejs.dev/) - Build tool
 - [Rest Countries API](https://restcountries.com/) - API
+- [Axios] (https://axios-http.com/) - HTTP client
+- [Netlify](https://www.netlify.com/) - Deployment
 
 
 ## Design

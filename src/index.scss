@@ -3,14 +3,21 @@
 @font-face {
   font-family: 'Poppins';
   src: url(./assets/Poppins-Regular.ttf) format('truetype');
-  font-weight: normal;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url(./assets/Poppins-SemiBold.ttf) format('truetype');
+  font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Poppins';
   src: url(./assets/Poppins-Bold.ttf) format('truetype');
-  font-weight: bold;
+  font-weight: 700;
   font-style: normal;
 }
 
