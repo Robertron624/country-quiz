@@ -6,24 +6,35 @@ const getQuestionFromCountry = (
     otherOptions: string[],
     type: "capital" | "flag"
 ): Question => {
-    const { name, capital, flag } = country;
+    console.log("country recieved in getQuestionFromCountry: ", country);
+
+    const { name, capital, flags } = country;
+
+    let countryCapital;
+    let questionType = type;
+
+    // check if the country has a capital, if we don't check this, then the capital will be undefined and will cause an error
+
+    if (capital) {
+        countryCapital = capital[0];
+    } else {
+        // If the country does not have a capital, then the question type will be a flag question
+
+        countryCapital = "";
+        questionType = "flag";
+    }
 
     const question: Question = {
         id: Math.random(),
-        type: type,
+        type: questionType,
         options: [],
         correctAnswer: "",
-        flagUrl: flag,
-        countryCapital: capital[0], // results from the API are always an array, but we know that there is only one     capital, so we can just take the first element
+        flagUrl: flags.png,
+        countryCapital: countryCapital,
     };
 
-    if (question.type === "capital") {
-        question.options = [capital[0], ...otherOptions];
-        question.correctAnswer = capital[0];
-    } else {
-        question.options = [name.common, ...otherOptions];
-        question.correctAnswer = name.common;
-    }
+    question.options = [name.common, ...otherOptions];
+    question.correctAnswer = name.common;
 
     return question;
 };
@@ -37,8 +48,6 @@ export const getQuestions = (
     for (let i = 0; i < numberOfQuestions; i++) {
         const randomCountryIndex = Math.floor(Math.random() * countries.length);
         const randomCountry = countries[randomCountryIndex];
-
-        console.log("randomCountry: ", randomCountry)
 
         const otherOptions: string[] = [];
 
