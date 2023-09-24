@@ -42,7 +42,8 @@ const QuizQuestion = ({
                     : `${countryCapital} is the capital of`}
             </p>
             <ul role="list" className="options">
-                {options.map((option, index) => (
+                {options?.map((option, index) => (
+
                     <li
                         key={option}
                         className={`option ${
