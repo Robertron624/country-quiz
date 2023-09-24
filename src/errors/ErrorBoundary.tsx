@@ -31,7 +31,12 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     render(): ReactNode {
         if (this.state.hasError) {
             // You can customize the error message displayed to the user here
-            return <Fallback error={null} errorInfo={null} />;
+            return (
+                <Fallback
+                    error={new Error("Something went wrong.")}
+                    errorInfo={null}
+                />
+            )
         }
 
         return this.props.children;

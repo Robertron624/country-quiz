@@ -8,6 +8,9 @@ interface FallbackProps {
 }
 
 function Fallback({ error, errorInfo }: FallbackProps): React.ReactNode {
+
+    console.log("Error caught by error boundary:", error, errorInfo)
+
     return (
         <div>
             <h1>Something went wrong</h1>

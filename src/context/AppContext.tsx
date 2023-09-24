@@ -8,6 +8,7 @@
         userScore: number;
         currentQuestion: Question | null;
         Questions: Question[];
+        goToNextQuestion: () => void;
         startQuiz: () => void;
         endQuiz: () => void;
         setUserScore: (score: number) => void;
@@ -21,11 +22,12 @@
     export const QuizProvider: React.FC<{ children: ReactNode }> = ({
         children,
     }) => {
-        const [appRunning, setAppRunning] = useState<boolean>(false);
+        const [appRunning, setAppRunning] = useState<boolean>(true);
         const [userScore, setUserScore] = useState<number>(0);
         const [currentQuestion, setCurrentQuestion] = useState<Question | null>(
             null
         );
+        const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
 
         const [Questions, setQuestions] = useState<Question[]>([]);
 
@@ -36,10 +38,10 @@
             if(countries.length > 0) {
                 const questions = getQuestions(countries, 10);
                 setQuestions(questions);
-                setCurrentQuestion(questions[0]);
+                setCurrentQuestion(questions[currentQuestionIndex]);
             }
 
-        }, [countries])
+        }, [countries, currentQuestionIndex])
 
         const startQuiz = () => {
             setAppRunning(true);
@@ -52,12 +54,21 @@
             setAppRunning(false);
         };
 
+        const goToNextQuestion = () => {
+            // ckeck if there is a next question
+            if(currentQuestionIndex < Questions.length - 1) {
+                setCurrentQuestionIndex(currentQuestionIndex + 1);
+                setCurrentQuestion(Questions[currentQuestionIndex + 1]);
+            }
+        };
+
         return (
             <QuizContext.Provider
                 value={{
                     appRunning,
                     userScore,
                     currentQuestion,
+                    goToNextQuestion,
                     Questions,
                     startQuiz,
                     endQuiz,

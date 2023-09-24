@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Question } from "../types/AppTypes";
+import { useQuizContext } from "../hooks/useQuizContext";
 import "./QuizQuestion.scss";
 
 const mapper = ["A", "B", "C", "D"];
@@ -17,15 +18,36 @@ const QuizQuestion = ({
     const [currentSelected, setcurrentSelected] = useState<string>("");
     const [finalAnswer, setfinalAnswer] = useState<string>("");
 
+    const { goToNextQuestion, userScore, setUserScore, endQuiz } = useQuizContext();
+
     const handleClick = (option: string) => {
         setcurrentSelected(option);
+    };
+
+    const resetState = () => {
+        setisCorrect(null);
+        setcurrentSelected("");
+        setfinalAnswer("");
     };
 
     const handleFinalAnswer = () => {
         setfinalAnswer(currentSelected);
         setisCorrect(currentSelected === correctAnswer);
+
+        if (currentSelected === correctAnswer) {
+            setUserScore(userScore + 1);
+        }
         if(finalAnswer) {
-            console.log("next question")
+
+            if(!isCorrect) {
+                endQuiz();
+            }
+            else {
+
+                // move to next question
+                resetState();
+                goToNextQuestion();
+            }
         }
     };
 

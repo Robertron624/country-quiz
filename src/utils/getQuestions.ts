@@ -6,8 +6,6 @@ const getQuestionFromCountry = (
     otherOptions: string[],
     type: "capital" | "flag"
 ): Question => {
-    console.log("country recieved in getQuestionFromCountry: ", country);
-
     const { name, capital, flags } = country;
 
     let countryCapital;
