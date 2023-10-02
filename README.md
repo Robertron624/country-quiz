@@ -42,9 +42,19 @@
 Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
 
 - Where can I see your demo?
+You can see the demo [here](https://country-quiz-react-axios.netlify.app/)
+
 - What was your experience?
+
+It was tough at first, but I learned a lot about React and TypeScript.
+
 - What have you learned/improved?
-- Your wisdom? :)
+
+I learned a lot of React Context and how to use it. I kept practicing my TypeScript skills and I'm getting better at it.
+I also kept using custom hooks and I'm getting better at those too.
+
+- Your wisdom?
+I recommend using a state management library like Redux or MobX or a light weight one like zustand. I used React Context and it was a bit of a headache.
 
 ### Built With
 
@@ -73,7 +83,7 @@ This application/site was created as a submission to a [DevChallenges](https://d
 - User story: I can see select an answer
 - User story: I can see if my answer is correct or incorrect
 - User story: When I answer c##orrectly, I can move on to the next question
-- User story: When I answer incorrectly, I can see my results and try again
+- User story: When I answer incorrectly, I can see my results and try again 
 - User story: I can try again
 
 ## How To Use
@@ -90,16 +100,19 @@ $ git clone https://github.com/your-user-name/your-project-name
 $ npm install
 
 # Run the app
-$ npm start
+$ npm run dev
+
+# Build the app
+$ npm run build
 ```
 
 ## Acknowledgements
 
 <!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example: -->
 
-- [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
-- [Node.js](https://nodejs.org/)
-- [Marked - a markdown parser](https://github.com/chjj/marked)
+- [ReactJs Docs](https://reactjs.org/docs/getting-started.html)
+- [Reusing code with custom hooks](https://react.dev/learn/reusing-logic-with-custom-hooks)
+- [How to handle global state using Context API](https://www.positronx.io/how-to-handle-global-state-in-react-js-using-context-api/)
 
 ## Contact
 
