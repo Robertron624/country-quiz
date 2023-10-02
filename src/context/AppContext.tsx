@@ -37,7 +37,7 @@
         useEffect(() => {
 
             if(countries.length > 0) {
-                const questions = getQuestions(countries, 10);
+                const questions = getQuestions(countries, 100);
                 setQuestions(questions);
                 setCurrentQuestion(questions[currentQuestionIndex]);
             }
