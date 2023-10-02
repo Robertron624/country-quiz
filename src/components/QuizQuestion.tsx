@@ -18,7 +18,8 @@ const QuizQuestion = ({
     const [currentSelected, setcurrentSelected] = useState<string>("");
     const [finalAnswer, setfinalAnswer] = useState<string>("");
 
-    const { goToNextQuestion, userScore, setUserScore, endQuiz } = useQuizContext();
+    const { goToNextQuestion, incrementScore, endQuiz } =
+        useQuizContext();
 
     const handleClick = (option: string) => {
         setcurrentSelected(option);
@@ -35,15 +36,14 @@ const QuizQuestion = ({
         setisCorrect(currentSelected === correctAnswer);
 
         if (currentSelected === correctAnswer) {
-            setUserScore(userScore + 1);
+            incrementScore();
         }
-        if(finalAnswer) {
+        if (finalAnswer) {
+            if (!isCorrect) {
 
-            if(!isCorrect) {
+                console.log("wrong answer");
                 endQuiz();
-            }
-            else {
-
+            } else {
                 // move to next question
                 resetState();
                 goToNextQuestion();
@@ -65,15 +65,25 @@ const QuizQuestion = ({
             </p>
             <ul role="list" className="options">
                 {options?.map((option, index) => (
-
                     <li
                         key={option}
                         className={`option ${
                             currentSelected === option ? "selected" : ""
-                        } ${(finalAnswer && option == correctAnswer) ? 'correct-answer' : ''} ${isCorrect === false && finalAnswer === option ? "final-answer wrong-answer" : ""} ${isCorrect === true && finalAnswer === option ? "final-answer" : ""}`}
+                        } ${
+                            finalAnswer && option == correctAnswer
+                                ? "correct-answer"
+                                : ""
+                        } ${
+                            isCorrect === false && finalAnswer === option
+                                ? "final-answer wrong-answer"
+                                : ""
+                        } ${
+                            isCorrect === true && finalAnswer === option
+                                ? "final-answer"
+                                : ""
+                        }`}
                     >
                         <button
-
                             disabled={finalAnswer ? true : false}
                             onClick={() => {
                                 handleClick(option);
@@ -82,19 +92,16 @@ const QuizQuestion = ({
                             <span className="option-letter">
                                 {mapper[index]}
                             </span>
-                            {option}
+                            <span className="option-name">{option}</span>
                         </button>
                     </li>
                 ))}
             </ul>
             {currentSelected && (
-                <button
-                    className="submit-btn"
-                    onClick={handleFinalAnswer}
-                >
+                <button className="submit-btn" onClick={handleFinalAnswer}>
                     {finalAnswer ? "Next" : "Submit"}
                 </button>
-            )} 
+            )}
         </div>
     );
 };

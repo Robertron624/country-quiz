@@ -1,8 +1,12 @@
 import "./GameOver.scss";
 
 import gameOverImage from "../assets/images/undraw_winners_re_wr1l.svg";
+import { useQuizContext } from "../hooks/useQuizContext";
 
 const GameOver = () => {
+
+    const { userScore, startQuiz } = useQuizContext();
+
     return (
         <div className="gameover-container">
             <div className="gameover-image">
@@ -11,10 +15,10 @@ const GameOver = () => {
             <div className="texts">
                 <h3>Results</h3>
                 <p>
-                    You got <span className="score">4</span> correct answers
+                    You got <span className="score">{userScore}</span> correct answers
                 </p>
             </div>
-            <button className="try-again">
+            <button onClick={startQuiz} className="try-again">
                 Try again
             </button>
         </div>
