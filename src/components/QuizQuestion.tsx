@@ -51,15 +51,11 @@ const QuizQuestion = ({
         setisCorrect(currentSelected === correctAnswer);
 
         if (currentSelected === correctAnswer) {
-
-            console.log("correct answer")
-
             incrementScore();
         }
 
         if (finalAnswer) {
             if (!isCorrect) {
-                console.log("wrong answer");
                 endQuiz();
             } else {
                 // Move to the next question

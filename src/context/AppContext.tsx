@@ -53,6 +53,7 @@
 
         const endQuiz = () => {
             setAppRunning(false);
+            setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
         };
 
         const incrementScore = () => {
