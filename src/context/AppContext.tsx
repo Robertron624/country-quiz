@@ -12,6 +12,7 @@
         startQuiz: () => void;
         endQuiz: () => void;
         incrementScore: () => void;
+        decreaseScore: () => void;
         setCurrentQuestion: (question: Question | null) => void;
     }
 
@@ -58,6 +59,10 @@
             setUserScore((prevScore) => prevScore + 1);
         }
 
+        const decreaseScore = () => {
+            setUserScore((prevScore) => prevScore - 1);
+        }
+
         const goToNextQuestion = () => {
             // ckeck if there is a next question
             if(currentQuestionIndex < Questions.length - 1) {
@@ -77,6 +82,7 @@
                     startQuiz,
                     endQuiz,
                     incrementScore,
+                    decreaseScore,
                     setCurrentQuestion,
                 }}
             >

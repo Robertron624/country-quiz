@@ -18,11 +18,21 @@ const QuizQuestion = ({
     const [currentSelected, setcurrentSelected] = useState<string>("");
     const [finalAnswer, setfinalAnswer] = useState<string>("");
 
-    const { goToNextQuestion, incrementScore, endQuiz } =
-        useQuizContext();
+    const { goToNextQuestion, incrementScore, decreaseScore, endQuiz } = useQuizContext();
 
     const handleClick = (option: string) => {
-        setcurrentSelected(option);
+        if (finalAnswer) {
+            // If the final answer has already been submitted, ignore clicks
+            return;
+        }
+
+        if (currentSelected === option) {
+            // If the same option is clicked again, unselect it
+            setcurrentSelected("");
+        } else {
+            // Otherwise, select the new option
+            setcurrentSelected(option);
+        }
     };
 
     const resetState = () => {
@@ -32,20 +42,29 @@ const QuizQuestion = ({
     };
 
     const handleFinalAnswer = () => {
+        if (currentSelected === "") {
+            // Ensure that a selection has been made before finalizing the answer
+            return;
+        }
+
         setfinalAnswer(currentSelected);
         setisCorrect(currentSelected === correctAnswer);
 
         if (currentSelected === correctAnswer) {
+
+            console.log("correct answer")
+
             incrementScore();
         }
+
         if (finalAnswer) {
             if (!isCorrect) {
-
                 console.log("wrong answer");
                 endQuiz();
             } else {
-                // move to next question
+                // Move to the next question
                 resetState();
+                decreaseScore();
                 goToNextQuestion();
             }
         }
@@ -70,7 +89,7 @@ const QuizQuestion = ({
                         className={`option ${
                             currentSelected === option ? "selected" : ""
                         } ${
-                            finalAnswer && option == correctAnswer
+                            finalAnswer && option === correctAnswer
                                 ? "correct-answer"
                                 : ""
                         } ${
