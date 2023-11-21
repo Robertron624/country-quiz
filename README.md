@@ -37,7 +37,8 @@
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+![image](https://github.com/Robertron624/country-quiz/assets/72587880/45b42d53-169f-44f5-acdb-8891f4a1288b)
+
 
 Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
 
@@ -65,7 +66,7 @@ I recommend using a state management library like Redux or MobX or a light weigh
 - [Sass](https://sass-lang.com/) - CSS preprocessor
 - [Vite](https://vitejs.dev/) - Build tool
 - [Rest Countries API](https://restcountries.com/) - API
-- [Axios] (https://axios-http.com/) - HTTP client
+- [Axios](https://axios-http.com/) - HTTP client
 - [Netlify](https://www.netlify.com/) - Deployment
 
 
